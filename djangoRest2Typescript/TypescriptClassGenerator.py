@@ -15,6 +15,7 @@ class TypescriptClassGenerator:
         'datetime': 'string',
         'date': 'string',
         'choice': 'string',
+        'image': 'string',
     }
     @staticmethod
     def getStaticOptionsCode(fieldName, fieldOptions):
