@@ -15,7 +15,8 @@ class TypescriptClassGenerator:
         'datetime': 'string',
         'date': 'string',
         'choice': 'string',
-        'image': 'string',
+        'image upload': 'string',
+        'file upload': 'string',
     }
     @staticmethod
     def getStaticOptionsCode(fieldName, fieldOptions):
