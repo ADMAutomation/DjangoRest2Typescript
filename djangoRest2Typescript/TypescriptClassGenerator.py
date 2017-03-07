@@ -20,7 +20,7 @@ class TypescriptClassGenerator:
     }
     @staticmethod
     def getStaticOptionsCode(fieldName, fieldOptions):
-        result = '    public get %s_options():{ [key: string] : any; } {' % fieldName
+        result = '    public static get %s_options():{ [key: string] : any; } {' % fieldName
         result += os.linesep
         result += '        return {'
         result += os.linesep
@@ -58,7 +58,7 @@ class TypescriptClassGenerator:
         return result
     @staticmethod
     def getChoicesCode(fieldName, values):
-        result = '    public get %s_choices():{ [key: string] : string; } {' % fieldName
+        result = '    public static get %s_choices():{ [key: string] : string; } {' % fieldName
         result += os.linesep
         result += '        return {'
         result += os.linesep
