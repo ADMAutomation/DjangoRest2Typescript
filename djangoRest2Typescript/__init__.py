@@ -1,5 +1,5 @@
 __title__ = 'Django Rest 2 Typescript'
-__version__ = '0.0.3'
+__version__ = '0.0.5'
 __author__ = 'Alfredo Di Maria'
 __license__ = 'GPL 3'
 __copyright__ = 'Copyright 2017 ADM Automation'

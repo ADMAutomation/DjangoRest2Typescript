@@ -20,24 +20,25 @@ class TypescriptClassGenerator:
     }
     @staticmethod
     def getStaticOptionsCode(fieldName, fieldOptions):
-        result = '    public static get %s_options():{ [key: string] : any; } {' % fieldName
+        result = u'    public static get %s_options():{ [key: string] : any; } {' % fieldName
         result += os.linesep
-        result += '        return {'
+        result += u'        return {'
         result += os.linesep
 
         keys = fieldOptions.keys()
         for k in ['required', 'read_only', 'max_length']:
             if k in keys:
-                result += '            "%s": %s, ' % (k, str(fieldOptions[k]).lower())
+                result += u'            "%s": %s, ' % (k, str(fieldOptions[k]).lower())
                 result += os.linesep
 
         for k in ['label', 'help_text', 'type']:
             if k in keys:
-                result += '            "%s": "%s", ' % (k, str(fieldOptions[k]).lower())
+                tmp = u'%s' % fieldOptions[k]
+                result += u'            "%s": "%s", ' % (k, tmp.lower())
                 result += os.linesep
-        result += '        };'
+        result += u'        };'
         result += os.linesep
-        result += '    }'
+        result += u'    }'
         result += os.linesep
         return result
     @staticmethod
@@ -52,22 +53,22 @@ class TypescriptClassGenerator:
 
     @staticmethod
     def getVersionCode(version = None):
-        result = ''
+        result = u''
         if version is not None:
-            result = '/*\n * Version %s\n*/\n\n' % version
+            result = u'/*\n * Version %s\n*/\n\n' % version
         return result
     @staticmethod
     def getChoicesCode(fieldName, values):
-        result = '    public static get %s_choices():{ [key: string] : string; } {' % fieldName
+        result = u'    public static get %s_choices():{ [key: string] : string; } {' % fieldName
         result += os.linesep
-        result += '        return {'
+        result += u'        return {'
         result += os.linesep
         for v in values:
-            result += '            "%s": "%s", ' % ( v['value'], v['display_name'] )
+            result += u'            "%s": "%s", ' % ( v['value'], v['display_name'] )
             result += os.linesep
-        result += '        };'
+        result += u'        };'
         result += os.linesep
-        result += '    }'
+        result += u'    }'
         result += os.linesep
         return result
 
@@ -77,7 +78,7 @@ class TypescriptClassGenerator:
         for key in data.keys():
             if data[key]['type'] in TypescriptClassGenerator.PYTHON2JSON_TYPE.keys():
                 result += os.linesep
-                result += '    public %s:%s;' % (
+                result += u'    public %s:%s;' % (
                     key,
                     TypescriptClassGenerator.PYTHON2JSON_TYPE[data[key]['type']]
                 )
