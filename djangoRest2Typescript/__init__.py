@@ -1,5 +1,6 @@
+from .TypescriptClassGenerator import TypescriptClassGenerator
 __title__ = 'Django Rest 2 Typescript'
-__version__ = '0.0.5'
+__version__ = TypescriptClassGenerator.CODE_VERSION
 __author__ = 'Alfredo Di Maria'
 __license__ = 'GPL 3'
 __copyright__ = 'Copyright 2017 ADM Automation'

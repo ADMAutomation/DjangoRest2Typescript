@@ -3,6 +3,7 @@ from rest_framework.metadata import SimpleMetadata
 import os
 
 class TypescriptClassGenerator:
+    CODE_VERSION = '0.0.6'
     PYTHON2JSON_TYPE = {
         'string': 'string',
         'boolean': 'boolean',
@@ -55,7 +56,7 @@ class TypescriptClassGenerator:
     def getVersionCode(version = None):
         result = u''
         if version is not None:
-            result = u'/*\n * Version %s\n*/\n\n' % version
+            result = u'/*\n * Version %s - lib: %s\n*/\n\n' % (version, TypescriptClassGenerator.CODE_VERSION)
         return result
     @staticmethod
     def getChoicesCode(fieldName, values):
@@ -84,7 +85,10 @@ class TypescriptClassGenerator:
                 )
                 result += os.linesep
                 result += TypescriptClassGenerator.getStaticOptionsCode(key, data[key])
-                if data[key]['type'] == 'choice':
+                if data[key]['type'] == 'choice' and 'choices' in data[key]:
+                    """
+                    If the field is read only, it has no choices.
+                    """
                     result += TypescriptClassGenerator.getChoicesCode(key, data[key]['choices'])
             else:
                 raise Exception('Not supported type %s for field %s' % (data[key]['type'], key))
