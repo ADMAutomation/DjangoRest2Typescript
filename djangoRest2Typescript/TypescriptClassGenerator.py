@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
+from .__init__ import VERSION
 from rest_framework.metadata import SimpleMetadata
 import os
 
 class TypescriptClassGenerator:
-    CODE_VERSION = '0.0.6'
+    CODE_VERSION = VERSION
     PYTHON2JSON_TYPE = {
         'string': 'string',
         'boolean': 'boolean',
