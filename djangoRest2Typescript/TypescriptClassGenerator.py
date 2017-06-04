@@ -20,6 +20,7 @@ class TypescriptClassGenerator:
         'image upload': 'string',
         'file upload': 'string',
         'time': 'string',
+        'nested object': 'any',
     }
     @staticmethod
     def getStaticOptionsCode(fieldName, fieldOptions):
